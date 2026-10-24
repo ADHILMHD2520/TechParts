@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechParts | High-Performance Computer Parts & PC Components</title>
+  <meta name="description" content="TechParts is your premier destination for next-gen PC components, CPUs, GPUs, motherboards, RAM, SSDs, power supplies, cases, and cooling solutions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <header class="top-announcement">
+    <div class="container announcement-inner">
+      <div class="announcement-left">
+        <span class="announcement-badge">FLASH SALE</span>
+        <span>Get 10% off your first custom PC build with code <strong>TECH10</strong></span>
+      </div>
+      <div class="announcement-right">
+        <span><i class="fa-solid fa-truck-fast"></i> Free 2-Day Delivery over $100</span>
+        <span><i class="fa-solid fa-shield-halved"></i> 2-Year Official Warranty</span>
+        <a href="#admin" class="announcement-link"><i class="fa-solid fa-gauge-high"></i> Admin Portal</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Navigation Header -->
+  <header class="header-main">
+    <div class="container header-container">
+      
+      <!-- Brand Logo -->
+      <a href="#home" class="logo" id="logoLink">
+        <div class="logo-icon-wrap">
+          <i class="fa-solid fa-microchip"></i>
+        </div>
+        <span>Tech<span class="logo-accent">Parts</span></span>
+      </a>
+
+      <!-- Search Bar with Live Suggestions Dropdown -->
+      <div class="header-search">
+        <div class="search-input-wrapper">
+          <i class="fa-solid fa-magnifying-glass" style="color: var(--text-muted); font-size: 0.95rem;"></i>
+          <input type="text" id="globalSearchInput" placeholder="Search computer parts (e.g. RTX 4070, Ryzen 7, DDR5)..." autocomplete="off">
+          <select id="globalSearchCategory" class="search-category-select">
+            <option value="all">All Parts</option>
+            <option value="cpus">CPUs</option>
+            <option value="gpus">GPUs</option>
+            <option value="motherboards">Motherboards</option>
+            <option value="ram">RAM</option>
+            <option value="ssds">SSDs</option>
+            <option value="power-supplies">Power Supplies</option>
+            <option value="cases">PC Cases</option>
+            <option value="cooling">Cooling</option>
+          </select>
+          <button type="button" class="search-submit-btn" id="searchSubmitBtn" title="Search">
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+        <div class="search-dropdown" id="searchDropdown"></div>
+      </div>
+
+      <!-- Header Action Buttons -->
+      <div class="header-actions">
+        
+        <!-- Navigation Links -->
+        <a href="#home" class="action-btn nav-link active" data-nav="home">Home</a>
+        <a href="#products" class="action-btn nav-link" data-nav="products">Products</a>
+        <a href="#deals" class="action-btn nav-link" data-nav="deals">Deals</a>
+
+        <!-- Wishlist Button -->
+        <a href="#profile?tab=wishlist" class="action-btn" id="headerWishlistBtn" title="Wishlist">
+          <div class="action-icon-wrap">
+            <i class="fa-regular fa-heart"></i>
+            <span class="badge-counter" id="wishlistCountBadge">0</span>
+          </div>
+          <span>Wishlist</span>
+        </a>
+
+        <!-- Cart Button -->
+        <button type="button" class="action-btn" id="headerCartBtn" title="View Cart">
+          <div class="action-icon-wrap">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="badge-counter" id="cartCountBadge">0</span>
+          </div>
+          <span id="headerCartTotal">$0.00</span>
+        </button>
+
+        <!-- User Profile / Auth Button -->
+        <a href="#profile" class="action-btn" id="headerUserBtn" title="My Account">
+          <i class="fa-regular fa-circle-user" style="font-size: 1.25rem;"></i>
+          <span id="headerUserName">Account</span>
+        </a>
+
+        <!-- Mobile Menu Hamburger -->
+        <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Category Navigation Strip -->
+  <nav class="category-nav-strip">
+    <div class="container cat-strip-inner">
+      <a href="#products" class="cat-strip-link active" data-category="all"><i class="fa-solid fa-border-all"></i> All Components</a>
+      <a href="#products?category=cpus" class="cat-strip-link" data-category="cpus"><i class="fa-solid fa-microchip"></i> CPUs</a>
+      <a href="#products?category=gpus" class="cat-strip-link" data-category="gpus"><i class="fa-solid fa-vr-cardboard"></i> GPUs</a>
+      <a href="#products?category=motherboards" class="cat-strip-link" data-category="motherboards"><i class="fa-solid fa-chess-board"></i> Motherboards</a>
+      <a href="#products?category=ram" class="cat-strip-link" data-category="ram"><i class="fa-solid fa-memory"></i> RAM</a>
+      <a href="#products?category=ssds" class="cat-strip-link" data-category="ssds"><i class="fa-solid fa-hard-drive"></i> SSDs</a>
+      <a href="#products?category=power-supplies" class="cat-strip-link" data-category="power-supplies"><i class="fa-solid fa-plug"></i> Power Supplies</a>
+      <a href="#products?category=cases" class="cat-strip-link" data-category="cases"><i class="fa-solid fa-box-archive"></i> PC Cases</a>
+      <a href="#products?category=cooling" class="cat-strip-link" data-category="cooling"><i class="fa-solid fa-fan"></i> Cooling</a>
+      <a href="#deals" class="cat-strip-link deal-link"><i class="fa-solid fa-bolt"></i> Special Deals</a>
+    </div>
+  </nav>
+
+  <!-- Main View Container (Dynamic views rendered here) -->
+  <main id="app-root">
+    
+    <!-- 1. HOMEPAGE VIEW -->
+    <section id="view-home" class="page-view">
+      
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="hero-glow-1"></div>
+        <div class="hero-glow-2"></div>
+        <div class="container hero-grid">
+          
+          <div class="hero-content">
+            <div class="hero-tag">
+              <i class="fa-solid fa-bolt"></i> NEXT-GEN HARDWARE 2026
+            </div>
+            <h1 class="hero-title">
+              Build Your <span class="gradient-text">Perfect PC</span>
+            </h1>
+            <p class="hero-description">
+              Unleash elite gaming frame rates and high-end workstation horsepower with genuine Intel, AMD, NVIDIA, Corsair, and ASUS components. Backed by guaranteed warranties and 24-hour dispatch.
+            </p>
+            <div class="hero-actions">
+              <a href="#products" class="btn-primary">
+                <i class="fa-solid fa-cart-shopping"></i> Shop Now
+              </a>
+              <a href="#deals" class="btn-secondary">
+                <i class="fa-solid fa-fire"></i> Explore Deals
+              </a>
+            </div>
+            <div class="hero-stats">
+              <div class="stat-item">
+                <span class="stat-number">50K+</span>
+                <span class="stat-label">PC Builders Served</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Genuine Products</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">2-Year</span>
+                <span class="stat-label">Direct Warranty</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="hero-visual-card">
+              <div class="hero-visual-img-wrap">
+                <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1000&q=80" alt="High-End Gaming Rig Hardware" onerror="this.src='https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=1000&q=80'">
+              </div>
+              <div class="hero-float-badge badge-top-right">
+                <div class="float-badge-icon"><i class="fa-solid fa-microchip"></i></div>
+                <div>
+                  <div class="float-badge-title">PCIe 5.0 Ready</div>
+                  <div class="float-badge-sub">Blistering 12.4 GB/s</div>
+                </div>
+              </div>
+              <div class="hero-float-badge badge-bottom-left">
+                <div class="float-badge-icon" style="background:#10b981;"><i class="fa-solid fa-gauge-high"></i></div>
+                <div>
+                  <div class="float-badge-title">Zero Bottlenecks</div>
+                  <div class="float-badge-sub">4K Ray Tracing 144+ FPS</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Trust Features Bar -->
+      <section class="features-strip container">
+        <div class="features-grid">
+          <div class="feature-box">
+            <div class="feature-icon-wrap"><i class="fa-solid fa-truck-fast"></i></div>
+            <div class="feature-text">
+              <h4>Free Express Delivery</h4>
+              <p>On all orders exceeding $100</p>
+            </div>
+          </div>
+          <div class="feature-box">
+            <div class="feature-icon-wrap"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="feature-text">
+              <h4>100% Genuine Brands</h4>
+              <p>Direct from verified manufacturers</p>
+            </div>
+          </div>
+          <div class="feature-box">
+            <div class="feature-icon-wrap"><i class="fa-solid fa-arrow-rotate-left"></i></div>
+            <div class="feature-text">
+              <h4>30-Day Easy Returns</h4>
+              <p>Hassle-free replacement policy</p>
+            </div>
+          </div>
+          <div class="feature-box">
+            <div class="feature-icon-wrap"><i class="fa-solid fa-headset"></i></div>
+            <div class="feature-text">
+              <h4>24/7 Tech Support</h4>
+              <p>Expert hardware advice & guidance</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Popular Categories Section -->
+      <section class="container" style="margin-bottom: 4.5rem;">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <h2>Popular Categories</h2>
+            <p>Browse components tailored specifically for your custom build.</p>
+          </div>
+          <a href="#products" class="view-all-link">Browse All <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="categories-grid" id="homeCategoriesGrid"></div>
+      </section>
+
+      <!-- Special Deals Section with Countdown -->
+      <section class="container" id="deals">
+        <div class="deals-banner-wrap">
+          <div class="deals-banner-header">
+            <div class="deals-header-left">
+              <div class="deals-icon-box"><i class="fa-solid fa-bolt"></i></div>
+              <div class="deals-title">
+                <h3>Flash Deals & Limited Offers</h3>
+                <p>Save up to $60 on flagship processors, graphics cards, and cooling kits.</p>
+              </div>
+            </div>
+            <div class="deals-countdown">
+              <div class="countdown-box">
+                <div class="countdown-number" id="cd-hours">08</div>
+                <div class="countdown-label">Hours</div>
+              </div>
+              <div class="countdown-box">
+                <div class="countdown-number" id="cd-minutes">42</div>
+                <div class="countdown-label">Mins</div>
+              </div>
+              <div class="countdown-box">
+                <div class="countdown-number" id="cd-seconds">19</div>
+                <div class="countdown-label">Secs</div>
+              </div>
+            </div>
+          </div>
+          <div class="deals-grid" id="homeDealsGrid"></div>
+        </div>
+      </section>
+
+      <!-- Featured Products Section -->
+      <section class="container" style="margin-bottom: 5rem;">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <h2>Featured Products</h2>
+            <p>Top-rated computer components hand-picked by our hardware specialists.</p>
+          </div>
+          <a href="#products" class="view-all-link">View Catalog <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="products-grid" id="homeFeaturedGrid"></div>
+      </section>
+
+    </section>
+
+    <!-- 2. PRODUCTS CATALOG LISTING VIEW -->
+    <section id="view-products" class="page-view" style="display: none;">
+      <div class="container">
+        
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs">
+          <a href="#home">Home</a>
+          <i class="fa-solid fa-chevron-right"></i>
+          <span>Products</span>
+          <span id="catalogCategoryBreadcrumb"></span>
+        </div>
+
+        <div class="catalog-page-layout">
+          
+          <!-- Filters Sidebar -->
+          <aside class="catalog-sidebar">
+            <div class="sidebar-header">
+              <h3><i class="fa-solid fa-sliders" style="color: var(--primary);"></i> Filters</h3>
+              <button type="button" class="reset-filters-btn" id="resetFiltersBtn">Reset All</button>
+            </div>
+
+            <!-- In-Stock Filter -->
+            <div class="filter-group">
+              <label class="in-stock-toggle">
+                <span>In Stock Only</span>
+                <span class="switch">
+                  <input type="checkbox" id="filterInStock">
+                  <span class="slider-round"></span>
+                </span>
+              </label>
+            </div>
+
+            <!-- Categories Filter -->
+            <div class="filter-group">
+              <div class="filter-group-title">Category</div>
+              <div class="filter-options-list" id="filterCategoriesList"></div>
+            </div>
+
+            <!-- Brands Filter -->
+            <div class="filter-group">
+              <div class="filter-group-title">Brand</div>
+              <div class="filter-options-list" id="filterBrandsList"></div>
+            </div>
+
+            <!-- Price Range Filter -->
+            <div class="filter-group">
+              <div class="filter-group-title">Price Range</div>
+              <div class="price-slider-wrap">
+                <input type="range" id="priceRangeInput" class="price-range-slider" min="0" max="1200" step="10" value="1200">
+                <div class="price-values-row">
+                  <span>$0</span>
+                  <span id="priceRangeDisplay">Up to $1,200</span>
+                </div>
+              </div>
+            </div>
+
+          </aside>
+
+          <!-- Catalog Main Column -->
+          <div class="catalog-main">
+            
+            <!-- Controls bar -->
+            <div class="catalog-top-bar">
+              <div class="catalog-results-info">
+                Showing <strong id="catalogCount">0</strong> products
+              </div>
+              <div class="catalog-sort-controls">
+                <div class="sort-select-wrap">
+                  <label for="catalogSortSelect"><i class="fa-solid fa-arrow-down-wide-short"></i> Sort:</label>
+                  <select id="catalogSortSelect" class="sort-select">
+                    <option value="popular">Popular</option>
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="newest">Newest</option>
+                    <option value="rating">Top Rated</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Active filter chips -->
+            <div class="active-filter-chips" id="activeFilterChips"></div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="catalogProductsGrid"></div>
+
+            <!-- Empty State -->
+            <div class="empty-state-box" id="catalogEmptyState" style="display: none;">
+              <div class="empty-state-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+              <div class="empty-state-title">No computer parts match your criteria</div>
+              <div class="empty-state-desc">Try clearing selected filters, adjusting the price slider, or searching for a different keyword.</div>
+              <button type="button" class="btn-primary" id="emptyStateResetBtn">Clear Filters</button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. PRODUCT DETAILS VIEW -->
+    <section id="view-product-details" class="page-view" style="display: none;">
+      <div class="container">
+        
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs" id="pdpBreadcrumbs"></div>
+
+        <div class="product-details-container">
+          <div class="product-details-grid">
+            
+            <!-- Left: Gallery -->
+            <div class="pdp-gallery-wrap">
+              <div class="pdp-main-image-wrap" id="pdpMainImageWrap">
+                <img id="pdpMainImg" src="" alt="Product Image">
+              </div>
+              <div class="pdp-thumbs-row" id="pdpThumbsRow"></div>
+            </div>
+
+            <!-- Right: Details & Buying Actions -->
+            <div class="pdp-info-wrap">
+              <div class="pdp-brand-sku">
+                <span class="pdp-brand-tag" id="pdpBrand"></span>
+                <span class="pdp-sku" id="pdpSku"></span>
+              </div>
+              <h1 class="pdp-title" id="pdpTitle"></h1>
+
+              <div class="pdp-rating-row">
+                <div class="rating-stars" id="pdpStars"></div>
+                <span style="font-weight: 700;" id="pdpRatingScore"></span>
+                <span class="rating-count" id="pdpReviewCount"></span>
+                <span style="color: var(--text-muted);">|</span>
+                <span id="pdpStockBadge" class="pdp-stock-status"></span>
+              </div>
+
+              <!-- Price Box -->
+              <div class="pdp-price-box">
+                <div class="pdp-price-left">
+                  <div class="pdp-curr-price" id="pdpCurrentPrice"></div>
+                  <div class="pdp-orig-price" id="pdpOriginalPrice"></div>
+                </div>
+                <div class="pdp-save-badge" id="pdpSaveBadge">Save $0</div>
+              </div>
+
+              <!-- Description -->
+              <div class="pdp-short-desc" id="pdpDescription"></div>
+
+              <!-- Quantity & Actions -->
+              <div class="pdp-actions-box">
+                <div class="qty-selector-row">
+                  <span class="qty-label">Quantity:</span>
+                  <div class="qty-picker">
+                    <button type="button" class="qty-btn" id="pdpQtyDec"><i class="fa-solid fa-minus"></i></button>
+                    <input type="text" class="qty-input" id="pdpQtyInput" value="1" readonly>
+                    <button type="button" class="qty-btn" id="pdpQtyInc"><i class="fa-solid fa-plus"></i></button>
+                  </div>
+                  <span style="font-size: 0.85rem; color: var(--text-muted);" id="pdpAvailableText"></span>
+                </div>
+
+                <div class="pdp-buttons-row">
+                  <button type="button" class="pdp-btn-add" id="pdpAddToCartBtn">
+                    <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                  </button>
+                  <button type="button" class="pdp-btn-buy" id="pdpBuyNowBtn">
+                    <i class="fa-solid fa-bolt"></i> Buy Now
+                  </button>
+                  <button type="button" class="pdp-wishlist-btn" id="pdpWishlistBtn" title="Add to Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Assurances -->
+              <div class="pdp-assurances">
+                <div class="assurance-item">
+                  <i class="fa-solid fa-truck-shield"></i>
+                  <span>Free 2-Day Insured Shipping</span>
+                </div>
+                <div class="assurance-item">
+                  <i class="fa-solid fa-certificate"></i>
+                  <span>100% Genuine Authorized Stock</span>
+                </div>
+                <div class="assurance-item">
+                  <i class="fa-solid fa-clock-rotate-left"></i>
+                  <span>30-Day Money Back Guarantee</span>
+                </div>
+                <div class="assurance-item">
+                  <i class="fa-solid fa-wrench"></i>
+                  <span>Free Hardware Compatibility Help</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- PDP Tabs: Description, Specs, Reviews -->
+          <div class="pdp-tabs-container">
+            <div class="pdp-tabs-nav">
+              <button type="button" class="pdp-tab-btn active" data-tab="specs">Specifications</button>
+              <button type="button" class="pdp-tab-btn" data-tab="reviews">Customer Reviews (<span id="pdpTabReviewCount">0</span>)</button>
+            </div>
+
+            <!-- Tab 1: Specs -->
+            <div class="pdp-tab-pane active" id="pdpPaneSpecs">
+              <table class="specs-table" id="pdpSpecsTable"></table>
+            </div>
+
+            <!-- Tab 2: Reviews -->
+            <div class="pdp-tab-pane" id="pdpPaneReviews">
+              <div class="reviews-breakdown-card">
+                <div class="overall-score-box">
+                  <div class="score-num" id="pdpScoreBig">4.9</div>
+                  <div class="score-stars" id="pdpScoreStars"></div>
+                  <div class="score-sub" id="pdpScoreSub">Based on verified reviews</div>
+                </div>
+                <div class="rating-bars-list">
+                  <div class="bar-row">
+                    <span>5 ★</span>
+                    <div class="bar-track"><div class="bar-fill" style="width: 88%;"></div></div>
+                    <span>88%</span>
+                  </div>
+                  <div class="bar-row">
+                    <span>4 ★</span>
+                    <div class="bar-track"><div class="bar-fill" style="width: 9%;"></div></div>
+                    <span>9%</span>
+                  </div>
+                  <div class="bar-row">
+                    <span>3 ★</span>
+                    <div class="bar-track"><div class="bar-fill" style="width: 2%;"></div></div>
+                    <span>2%</span>
+                  </div>
+                  <div class="bar-row">
+                    <span>2 ★</span>
+                    <div class="bar-track"><div class="bar-fill" style="width: 1%;"></div></div>
+                    <span>1%</span>
+                  </div>
+                  <div class="bar-row">
+                    <span>1 ★</span>
+                    <div class="bar-track"><div class="bar-fill" style="width: 0%;"></div></div>
+                    <span>0%</span>
+                  </div>
+                </div>
+                <div>
+                  <button type="button" class="btn-primary" id="openAddReviewBtn">
+                    <i class="fa-solid fa-pen"></i> Write a Review
+                  </button>
+                </div>
+              </div>
+
+              <!-- Reviews List -->
+              <div class="reviews-list" id="pdpReviewsList"></div>
+
+              <!-- Add Review Form (collapsible) -->
+              <div class="add-review-card" id="addReviewFormContainer" style="display: none;">
+                <h4>Write Your Review</h4>
+                <form id="addReviewForm">
+                  <div class="form-grid-2">
+                    <div class="form-group">
+                      <label class="form-label">Your Name</label>
+                      <input type="text" class="form-input" id="reviewAuthorInput" required placeholder="e.g. John Doe">
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label">Rating</label>
+                      <select class="form-input" id="reviewRatingInput">
+                        <option value="5">★★★★★ (5/5 Excellent)</option>
+                        <option value="4">★★★★☆ (4/5 Very Good)</option>
+                        <option value="3">★★★☆☆ (3/5 Average)</option>
+                        <option value="2">★★☆☆☆ (2/5 Poor)</option>
+                        <option value="1">★☆☆☆☆ (1/5 Terrible)</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Review Headline</label>
+                    <input type="text" class="form-input" id="reviewTitleInput" required placeholder="e.g. Amazing performance boost in 1440p gaming!">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Review Details</label>
+                    <textarea class="form-input" id="reviewTextInput" rows="4" required placeholder="Share your experience with installation, thermals, performance, or packaging..."></textarea>
+                  </div>
+                  <button type="submit" class="btn-primary">Submit Review</button>
+                </form>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Related Products Section -->
+        <div style="margin-bottom: 4rem;">
+          <div class="section-header">
+            <div class="section-title-wrap">
+              <h2>Related Components</h2>
+              <p>Customers building with this part also purchased:</p>
+            </div>
+          </div>
+          <div class="products-grid" id="pdpRelatedGrid"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. CART VIEW -->
+    <section id="view-cart" class="page-view" style="display: none;">
+      <div class="container">
+        
+        <div class="breadcrumbs">
+          <a href="#home">Home</a>
+          <i class="fa-solid fa-chevron-right"></i>
+          <span>Shopping Cart</span>
+        </div>
+
+        <div class="cart-layout" id="cartContentWrapper">
+          
+          <!-- Cart Items Column -->
+          <div class="cart-table-card">
+            <div class="cart-card-header">
+              <h2>Shopping Cart (<span id="cartItemsCountText">0 items</span>)</h2>
+              <button type="button" class="reset-filters-btn" id="clearCartBtn">Clear Cart</button>
+            </div>
+            
+            <div class="cart-items-list" id="cartItemsList"></div>
+
+            <div style="margin-top: 1.5rem; display: flex; justify-content: space-between;">
+              <a href="#products" class="btn-secondary" style="color: var(--text-main); border-color: var(--border-color); background: var(--bg-surface-alt);">
+                <i class="fa-solid fa-arrow-left"></i> Continue Shopping
+              </a>
+            </div>
+          </div>
+
+          <!-- Order Summary Column -->
+          <div class="order-summary-box">
+            <h3 class="summary-title">Order Summary</h3>
+            <div class="summary-rows">
+              <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="cartSubtotal">$0.00</span>
+              </div>
+              <div class="summary-row">
+                <span>Discount</span>
+                <span id="cartDiscount" style="color: var(--danger); font-weight: 700;">-$0.00</span>
+              </div>
+              <div class="summary-row">
+                <span>Estimated Shipping</span>
+                <span id="cartShipping">Free</span>
+              </div>
+              <div class="summary-row">
+                <span>Estimated Tax (8%)</span>
+                <span id="cartTax">$0.00</span>
+              </div>
+              <div class="summary-row total-row">
+                <span>Total</span>
+                <span id="cartTotal" style="color: var(--primary);">$0.00</span>
+              </div>
+            </div>
+
+            <!-- Promo code -->
+            <div class="promo-input-group">
+              <input type="text" class="promo-input" id="cartPromoInput" placeholder="Promo code (e.g. TECH10)">
+              <button type="button" class="promo-btn" id="cartPromoApplyBtn">Apply</button>
+            </div>
+
+            <a href="#checkout" class="checkout-btn" id="cartProceedCheckoutBtn">
+              Proceed to Checkout <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+            <div class="checkout-security-note">
+              <i class="fa-solid fa-lock"></i> 256-Bit SSL Encrypted & Secure Checkout
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Empty Cart State -->
+        <div class="empty-state-box" id="cartEmptyState" style="display: none;">
+          <div class="empty-state-icon"><i class="fa-solid fa-cart-arrow-down"></i></div>
+          <div class="empty-state-title">Your shopping cart is empty</div>
+          <div class="empty-state-desc">You haven't added any PC components to your cart yet. Explore our curated catalog to build your dream rig.</div>
+          <a href="#products" class="btn-primary">Explore Products</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. CHECKOUT VIEW -->
+    <section id="view-checkout" class="page-view" style="display: none;">
+      <div class="container">
+        
+        <div class="breadcrumbs">
+          <a href="#cart">Cart</a>
+          <i class="fa-solid fa-chevron-right"></i>
+          <span>Secure Checkout</span>
+        </div>
+
+        <div class="checkout-layout">
+          
+          <!-- Checkout Form Column -->
+          <form id="checkoutForm" class="checkout-form-card">
+            
+            <!-- Step 1: Contact Info -->
+            <div class="checkout-step">
+              <div class="step-header">
+                <span class="step-num">1</span>
+                <h3 class="step-title">Contact Information</h3>
+              </div>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">Email Address *</label>
+                  <input type="email" class="form-input" id="checkoutEmail" required placeholder="alex@example.com">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Phone Number *</label>
+                  <input type="tel" class="form-input" id="checkoutPhone" required placeholder="+1 (555) 000-0000">
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2: Delivery Address -->
+            <div class="checkout-step">
+              <div class="step-header">
+                <span class="step-num">2</span>
+                <h3 class="step-title">Delivery Address</h3>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Full Name *</label>
+                <input type="text" class="form-input" id="checkoutFullName" required placeholder="Alex Turner">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Street Address *</label>
+                <input type="text" class="form-input" id="checkoutStreet" required placeholder="742 Evergreen Terrace, Apt 4B">
+              </div>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">City *</label>
+                  <input type="text" class="form-input" id="checkoutCity" required placeholder="Seattle">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">State / Province *</label>
+                  <input type="text" class="form-input" id="checkoutState" required placeholder="Washington">
+                </div>
+              </div>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">ZIP / Postal Code *</label>
+                  <input type="text" class="form-input" id="checkoutZip" required placeholder="98101">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Country</label>
+                  <input type="text" class="form-input" value="United States" readonly>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: Payment Method -->
+            <div class="checkout-step">
+              <div class="step-header">
+                <span class="step-num">3</span>
+                <h3 class="step-title">Payment Method</h3>
+              </div>
+              
+              <div class="payment-methods-grid">
+                <div class="payment-method-tile selected" data-method="card">
+                  <i class="fa-solid fa-credit-card payment-tile-icon"></i>
+                  <span class="payment-tile-title">Credit / Debit Card</span>
+                </div>
+                <div class="payment-method-tile" data-method="upi">
+                  <i class="fa-solid fa-qrcode payment-tile-icon"></i>
+                  <span class="payment-tile-title">UPI / QR Code</span>
+                </div>
+                <div class="payment-method-tile" data-method="cod">
+                  <i class="fa-solid fa-hand-holding-dollar payment-tile-icon"></i>
+                  <span class="payment-tile-title">Cash on Delivery</span>
+                </div>
+              </div>
+
+              <!-- Payment Method Details Box -->
+              <div class="payment-detail-container" id="paymentDetailsContainer">
+                
+                <!-- Credit Card Form -->
+                <div id="paymentPaneCard">
+                  <div class="card-preview-visual">
+                    <div class="card-chip"></div>
+                    <div class="card-number-display" id="visualCardNum">•••• •••• •••• 4242</div>
+                    <div class="card-footer-display">
+                      <div>
+                        <div style="font-size: 0.65rem; color: #94a3b8;">Cardholder</div>
+                        <div id="visualCardName">ALEX TURNER</div>
+                      </div>
+                      <div>
+                        <div style="font-size: 0.65rem; color: #94a3b8;">Expires</div>
+                        <div id="visualCardExp">12/28</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Card Number</label>
+                    <input type="text" class="form-input" id="cardInputNumber" placeholder="4242 4242 4242 4242" maxlength="19">
+                  </div>
+                  <div class="form-grid-2">
+                    <div class="form-group">
+                      <label class="form-label">Cardholder Name</label>
+                      <input type="text" class="form-input" id="cardInputName" placeholder="Alex Turner">
+                    </div>
+                    <div class="form-grid-2">
+                      <div class="form-group">
+                        <label class="form-label">Expiry (MM/YY)</label>
+                        <input type="text" class="form-input" id="cardInputExpiry" placeholder="12/28" maxlength="5">
+                      </div>
+                      <div class="form-group">
+                        <label class="form-label">CVV</label>
+                        <input type="password" class="form-input" id="cardInputCvv" placeholder="123" maxlength="4">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- UPI Details -->
+                <div id="paymentPaneUpi" style="display: none;">
+                  <div class="upi-qr-box">
+                    <svg class="upi-qr-img" viewBox="0 0 100 100" fill="#0f172a">
+                      <rect width="100" height="100" fill="#ffffff" />
+                      <!-- QR Pattern Mock -->
+                      <rect x="10" y="10" width="25" height="25" fill="#0f172a" />
+                      <rect x="15" y="15" width="15" height="15" fill="#ffffff" />
+                      <rect x="18" y="18" width="9" height="9" fill="#0f172a" />
+                      
+                      <rect x="65" y="10" width="25" height="25" fill="#0f172a" />
+                      <rect x="70" y="15" width="15" height="15" fill="#ffffff" />
+                      <rect x="73" y="18" width="9" height="9" fill="#0f172a" />
+
+                      <rect x="10" y="65" width="25" height="25" fill="#0f172a" />
+                      <rect x="15" y="70" width="15" height="15" fill="#ffffff" />
+                      <rect x="18" y="73" width="9" height="9" fill="#0f172a" />
+
+                      <rect x="42" y="12" width="6" height="6" fill="#0f172a" />
+                      <rect x="52" y="12" width="6" height="6" fill="#0f172a" />
+                      <rect x="45" y="45" width="10" height="10" fill="#2563eb" />
+                      <rect x="65" y="65" width="25" height="25" fill="#0f172a" />
+                      <rect x="70" y="70" width="15" height="15" fill="#ffffff" />
+                      <rect x="73" y="73" width="9" height="9" fill="#2563eb" />
+                    </svg>
+                    <div>
+                      <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem;">Scan & Pay via Any UPI App</h4>
+                      <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.85rem;">Google Pay, PhonePe, Paytm, or BHIM.</p>
+                      <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label">Or enter UPI ID</label>
+                        <input type="text" class="form-input" id="upiIdInput" placeholder="username@okhdfcbank">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- COD Details -->
+                <div id="paymentPaneCod" style="display: none;">
+                  <div style="display: flex; gap: 1rem; align-items: center;">
+                    <i class="fa-solid fa-truck-ramp-box" style="font-size: 2rem; color: var(--primary);"></i>
+                    <div>
+                      <h4 style="font-size: 1rem; font-weight: 700;">Cash on Delivery Available</h4>
+                      <p style="font-size: 0.85rem; color: var(--text-muted);">Pay in cash or digital payment link when your hardware components arrive at your doorstep.</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Place Order Button -->
+            <button type="submit" class="checkout-btn" style="margin-top: 1.5rem;" id="placeOrderBtn">
+              <i class="fa-solid fa-shield-check"></i> Place Order Now
+            </button>
+          </form>
+
+          <!-- Checkout Order Summary Preview -->
+          <div class="order-summary-box">
+            <h3 class="summary-title">Order Items (<span id="checkoutItemCount">0</span>)</h3>
+            <div id="checkoutItemsList" style="display: flex; flex-direction: column; gap: 0.85rem; max-height: 280px; overflow-y: auto; margin-bottom: 1.25rem;"></div>
+            
+            <div class="summary-rows">
+              <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="checkoutSubtotal">$0.00</span>
+              </div>
+              <div class="summary-row">
+                <span>Discount</span>
+                <span id="checkoutDiscount" style="color: var(--danger); font-weight: 700;">-$0.00</span>
+              </div>
+              <div class="summary-row">
+                <span>Shipping</span>
+                <span>Free (Express)</span>
+              </div>
+              <div class="summary-row">
+                <span>Tax (8%)</span>
+                <span id="checkoutTax">$0.00</span>
+              </div>
+              <div class="summary-row total-row">
+                <span>Grand Total</span>
+                <span id="checkoutTotal" style="color: var(--primary);">$0.00</span>
+              </div>
+            </div>
+
+            <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.45; border-top: 1px solid var(--border-light); padding-top: 1rem;">
+              <i class="fa-solid fa-circle-check" style="color: var(--success);"></i> Orders placed before 3 PM EST ship the same business day in anti-static protective packaging.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 6. AUTHENTICATION (LOGIN / SIGNUP) VIEW -->
+    <section id="view-login" class="page-view" style="display: none;">
+      <div class="container">
+        <div class="auth-wrapper">
+          <div class="auth-header">
+            <div class="logo-icon-wrap" style="margin: 0 auto 1rem;">
+              <i class="fa-solid fa-microchip"></i>
+            </div>
+            <h2 id="authHeading">Welcome Back</h2>
+            <p style="font-size: 0.88rem; color: var(--text-muted);" id="authSubheading">Access your TechParts account, track orders, and sync wishlists.</p>
+          </div>
+
+          <div class="auth-tabs">
+            <button type="button" class="auth-tab-btn active" id="authTabLogin">Sign In</button>
+            <button type="button" class="auth-tab-btn" id="authTabSignup">Create Account</button>
+          </div>
+
+          <button type="button" class="oauth-btn" id="googleLoginBtn">
+            <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+            Continue with Google
+          </button>
+
+          <div class="auth-divider">OR WITH EMAIL</div>
+
+          <form id="authForm">
+            <div class="form-group" id="authNameGroup" style="display: none;">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-input" id="authNameInput" placeholder="Alex Turner">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-input" id="authEmailInput" required placeholder="alex@techparts.dev" value="alex.turner@techparts.dev">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Password</label>
+              <input type="password" class="form-input" id="authPasswordInput" required placeholder="••••••••" value="password123">
+            </div>
+            <div class="form-group" id="authConfirmGroup" style="display: none;">
+              <label class="form-label">Confirm Password</label>
+              <input type="password" class="form-input" id="authConfirmPasswordInput" placeholder="••••••••">
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; font-size: 0.85rem;">
+              <label style="display: flex; align-items: center; gap: 0.45rem; cursor: pointer;">
+                <input type="checkbox" checked id="rememberMe"> Remember me
+              </label>
+              <a href="javascript:void(0)" id="forgotPasswordLink" style="color: var(--primary); font-weight: 600;">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;" id="authSubmitBtn">
+              Sign In to TechParts
+            </button>
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. USER PROFILE VIEW -->
+    <section id="view-profile" class="page-view" style="display: none;">
+      <div class="container">
+        
+        <div class="breadcrumbs">
+          <a href="#home">Home</a>
+          <i class="fa-solid fa-chevron-right"></i>
+          <span>My Profile</span>
+        </div>
+
+        <div class="profile-layout">
+          
+          <!-- Profile Sidebar -->
+          <aside class="profile-sidebar-card">
+            <img id="profileUserAvatar" class="profile-avatar-large" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Avatar">
+            <h3 class="profile-user-name" id="profileUserName">Alex Turner</h3>
+            <p class="profile-user-email" id="profileUserEmail">alex.turner@techparts.dev</p>
+            
+            <nav class="profile-nav-menu">
+              <button type="button" class="profile-nav-item active" data-tab="orders">
+                <i class="fa-solid fa-box"></i> My Orders
+              </button>
+              <button type="button" class="profile-nav-item" data-tab="wishlist">
+                <i class="fa-solid fa-heart"></i> Wishlist
+              </button>
+              <button type="button" class="profile-nav-item" data-tab="addresses">
+                <i class="fa-solid fa-location-dot"></i> Saved Addresses
+              </button>
+              <button type="button" class="profile-nav-item" data-tab="personal">
+                <i class="fa-solid fa-user-gear"></i> Personal Info
+              </button>
+              <button type="button" class="profile-nav-item logout-item" id="profileLogoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i> Sign Out
+              </button>
+            </nav>
+          </aside>
+
+          <!-- Profile Main Content -->
+          <div class="profile-main-card">
+            
+            <!-- Tab: My Orders -->
+            <div class="profile-pane active" id="profilePaneOrders">
+              <h2 class="profile-card-title">Order History & Tracking</h2>
+              <div class="orders-list" id="profileOrdersList"></div>
+            </div>
+
+            <!-- Tab: Wishlist -->
+            <div class="profile-pane" id="profilePaneWishlist" style="display: none;">
+              <h2 class="profile-card-title">My Wishlist (<span id="profileWishlistCount">0</span>)</h2>
+              <div class="products-grid" id="profileWishlistGrid"></div>
+            </div>
+
+            <!-- Tab: Saved Addresses -->
+            <div class="profile-pane" id="profilePaneAddresses" style="display: none;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+                <h2 style="font-size: 1.45rem; font-weight: 800;">Saved Shipping Addresses</h2>
+                <button type="button" class="btn-primary" id="openAddAddressModalBtn" style="padding: 0.5rem 1rem; font-size: 0.85rem;">
+                  <i class="fa-solid fa-plus"></i> Add Address
+                </button>
+              </div>
+              <div class="addresses-grid" id="profileAddressesGrid"></div>
+            </div>
+
+            <!-- Tab: Personal Info -->
+            <div class="profile-pane" id="profilePanePersonal" style="display: none;">
+              <h2 class="profile-card-title">Personal Information</h2>
+              <form id="profilePersonalForm" style="max-width: 500px;">
+                <div class="form-group">
+                  <label class="form-label">Full Name</label>
+                  <input type="text" class="form-input" id="profileEditName" value="Alex Turner" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Email Address</label>
+                  <input type="email" class="form-input" id="profileEditEmail" value="alex.turner@techparts.dev" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Phone Number</label>
+                  <input type="tel" class="form-input" id="profileEditPhone" value="+1 (555) 234-8901">
+                </div>
+                <button type="submit" class="btn-primary" style="margin-top: 1rem;">Save Changes</button>
+              </form>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 8. ADMIN DASHBOARD VIEW -->
+    <section id="view-admin" class="page-view" style="display: none;">
+      <div class="container admin-layout">
+        
+        <div class="admin-header-row">
+          <div>
+            <span class="announcement-badge" style="margin-bottom: 0.4rem; display: inline-block;">STORE OPERATIONS</span>
+            <h1 style="font-size: 2rem; font-weight: 800; letter-spacing: -0.5px;">TechParts Admin Portal</h1>
+          </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <a href="#home" class="btn-secondary" style="color: var(--text-main); border-color: var(--border-color); background: var(--bg-surface);">
+              <i class="fa-solid fa-store"></i> View Storefront
+            </a>
+            <button type="button" class="btn-primary" id="adminAddNewProdBtn">
+              <i class="fa-solid fa-plus"></i> Add New Product
+            </button>
+          </div>
+        </div>
+
+        <!-- Metric KPI Cards -->
+        <div class="admin-kpis-grid">
+          <div class="kpi-card">
+            <div class="kpi-icon-wrap kpi-icon-green"><i class="fa-solid fa-dollar-sign"></i></div>
+            <div class="kpi-info">
+              <h4>Total Revenue</h4>
+              <div class="kpi-value" id="adminKpiRevenue">$48,920.50</div>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon-wrap kpi-icon-blue"><i class="fa-solid fa-bag-shopping"></i></div>
+            <div class="kpi-info">
+              <h4>Total Orders</h4>
+              <div class="kpi-value" id="adminKpiOrders">142</div>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon-wrap kpi-icon-purple"><i class="fa-solid fa-microchip"></i></div>
+            <div class="kpi-info">
+              <h4>Active Catalog</h4>
+              <div class="kpi-value" id="adminKpiProducts">14</div>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon-wrap kpi-icon-amber"><i class="fa-solid fa-users"></i></div>
+            <div class="kpi-info">
+              <h4>Customers</h4>
+              <div class="kpi-value" id="adminKpiCustomers">89</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Admin Tabs -->
+        <div class="admin-tabs">
+          <button type="button" class="admin-tab-btn active" data-tab="products">Product Management</button>
+          <button type="button" class="admin-tab-btn" data-tab="orders">Order Management</button>
+          <button type="button" class="admin-tab-btn" data-tab="customers">Customers</button>
+        </div>
+
+        <!-- Admin Pane 1: Products -->
+        <div class="admin-pane active" id="adminPaneProducts">
+          <div class="admin-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Category</th>
+                  <th>Brand</th>
+                  <th>Price</th>
+                  <th>Stock</th>
+                  <th>Rating</th>
+                  <th style="text-align: right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminProductsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Admin Pane 2: Orders -->
+        <div class="admin-pane" id="adminPaneOrders" style="display: none;">
+          <div class="admin-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Date</th>
+                  <th>Customer</th>
+                  <th>Items</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminOrdersTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Admin Pane 3: Customers -->
+        <div class="admin-pane" id="adminPaneCustomers" style="display: none;">
+          <div class="admin-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Customer Name</th>
+                  <th>Email</th>
+                  <th>Status</th>
+                  <th>Total Spent</th>
+                  <th>Orders</th>
+                </tr>
+              </thead>
+              <tbody id="adminCustomersTableBody">
+                <tr>
+                  <td><strong>Alex Turner</strong></td>
+                  <td>alex.turner@techparts.dev</td>
+                  <td><span class="order-status-pill status-delivered">Verified Builder</span></td>
+                  <td><strong>$624.97</strong></td>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <td><strong>Marcus Vance</strong></td>
+                  <td>marcus.v@streamer.gg</td>
+                  <td><span class="order-status-pill status-delivered">Verified Builder</span></td>
+                  <td><strong>$1,449.98</strong></td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <td><strong>Sarah Jenkins</strong></td>
+                  <td>sarah.j@designstudio.io</td>
+                  <td><span class="order-status-pill status-delivered">Verified Builder</span></td>
+                  <td><strong>$819.98</strong></td>
+                  <td>1</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Sliding Cart Drawer -->
+  <div class="drawer-backdrop" id="cartDrawerBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="drawer-header">
+      <h3>Shopping Cart (<span id="drawerItemCount">0</span>)</h3>
+      <button type="button" class="drawer-close-btn" id="closeCartDrawerBtn">&times;</button>
+    </div>
+    <div class="drawer-body" id="drawerBody">
+      <div class="cart-items-list" id="drawerItemsList"></div>
+    </div>
+    <div class="drawer-footer">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; font-weight: 800; font-size: 1.15rem;">
+        <span>Subtotal</span>
+        <span id="drawerSubtotal" style="color: var(--primary);">$0.00</span>
+      </div>
+      <a href="#cart" class="btn-secondary" style="width: 100%; justify-content: center; margin-bottom: 0.65rem; color: var(--text-main); border-color: var(--border-color); background: #ffffff;">
+        View Full Cart
+      </a>
+      <a href="#checkout" class="checkout-btn" id="drawerCheckoutBtn">
+        Checkout Now <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Quick View Modal -->
+  <div class="modal-overlay" id="quickViewModal">
+    <div class="modal-window" style="max-width: 800px;">
+      <div class="modal-header">
+        <h3 id="qvTitle">Product Quick View</h3>
+        <button type="button" class="drawer-close-btn" id="closeQuickViewBtn">&times;</button>
+      </div>
+      <div class="modal-body" id="qvBody"></div>
+    </div>
+  </div>
+
+  <!-- Admin Add / Edit Product Modal -->
+  <div class="modal-overlay" id="adminProductModal">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3 id="adminProdModalTitle">Add New Product</h3>
+        <button type="button" class="drawer-close-btn" id="closeAdminProdModalBtn">&times;</button>
+      </div>
+      <form id="adminProductForm">
+        <div class="modal-body">
+          <input type="hidden" id="adminProdId">
+          <div class="form-group">
+            <label class="form-label">Product Name *</label>
+            <input type="text" class="form-input" id="adminProdName" required placeholder="e.g. AMD Ryzen 9 7950X3D">
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Category *</label>
+              <select class="form-input" id="adminProdCategory">
+                <option value="cpus">CPUs</option>
+                <option value="gpus">GPUs</option>
+                <option value="motherboards">Motherboards</option>
+                <option value="ram">RAM</option>
+                <option value="ssds">SSDs</option>
+                <option value="power-supplies">Power Supplies</option>
+                <option value="cases">PC Cases</option>
+                <option value="cooling">Cooling</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Brand *</label>
+              <input type="text" class="form-input" id="adminProdBrand" required placeholder="e.g. AMD">
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Price ($) *</label>
+              <input type="number" step="0.01" class="form-input" id="adminProdPrice" required placeholder="549.99">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Original Price ($)</label>
+              <input type="number" step="0.01" class="form-input" id="adminProdOrigPrice" placeholder="599.99">
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Stock Units *</label>
+              <input type="number" class="form-input" id="adminProdStock" required placeholder="15">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Highlight Badge</label>
+              <input type="text" class="form-input" id="adminProdBadge" placeholder="e.g. New Flagship">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Image URL</label>
+            <input type="url" class="form-input" id="adminProdImage" placeholder="https://images.unsplash.com/...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Product Description</label>
+            <textarea class="form-input" id="adminProdDesc" rows="3" placeholder="Key highlights and details..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="cancelAdminProdBtn" style="color: var(--text-main); border-color: var(--border-color);">Cancel</button>
+          <button type="submit" class="btn-primary">Save Component</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Order Confirmation Success Modal -->
+  <div class="modal-overlay" id="orderSuccessModal">
+    <div class="modal-window" style="max-width: 500px; text-align: center;">
+      <div class="modal-body" style="padding: 2.5rem;">
+        <div style="width: 72px; height: 72px; background: #ecfdf5; color: #10b981; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; margin: 0 auto 1.5rem;">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <h3 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem;">Order Confirmed!</h3>
+        <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+          Thank you for choosing TechParts. Your order <strong id="successOrderId" style="color: var(--text-main);"></strong> has been received and is being prepared for dispatch.
+        </p>
+        <div style="background: var(--bg-surface-alt); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.5rem; text-align: left; font-size: 0.88rem;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem;">
+            <span style="color: var(--text-muted);">Estimated Delivery:</span>
+            <strong>2 Business Days</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span style="color: var(--text-muted);">Tracking:</span>
+            <span id="successTrackingId" style="font-family: var(--font-mono); color: var(--primary); font-weight: 700;">FEDEX-839210</span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 0.75rem;">
+          <a href="#profile?tab=orders" class="btn-secondary" id="viewOrderTrackingBtn" style="flex: 1; justify-content: center; color: var(--text-main); border-color: var(--border-color); background: #ffffff;">
+            Track Order
+          </a>
+          <a href="#home" class="btn-primary" id="successHomeBtn" style="flex: 1; justify-content: center;">
+            Back to Store
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-grid">
+        
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <a href="#home" class="logo" style="color: #ffffff;">
+            <div class="logo-icon-wrap"><i class="fa-solid fa-microchip"></i></div>
+            <span>Tech<span class="logo-accent">Parts</span></span>
+          </a>
+          <p>
+            Your trusted destination for genuine computer hardware, enthusiast PC components, and expert technical guidance. Engineered for gamers, creators, and professionals.
+          </p>
+          <div class="social-links">
+            <a href="javascript:void(0)" class="social-btn" title="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="javascript:void(0)" class="social-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="javascript:void(0)" class="social-btn" title="Discord"><i class="fa-brands fa-discord"></i></a>
+            <a href="javascript:void(0)" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links-list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">All Components</a></li>
+            <li><a href="#deals">Special Deals</a></li>
+            <li><a href="#profile?tab=orders">Order Tracking</a></li>
+            <li><a href="#admin">Admin Dashboard</a></li>
+          </ul>
+        </div>
+
+        <!-- Categories -->
+        <div class="footer-col">
+          <h4>Popular Hardware</h4>
+          <ul class="footer-links-list">
+            <li><a href="#products?category=cpus">Processors (CPUs)</a></li>
+            <li><a href="#products?category=gpus">Graphics Cards (GPUs)</a></li>
+            <li><a href="#products?category=motherboards">Motherboards</a></li>
+            <li><a href="#products?category=ssds">Gen4 & Gen5 SSDs</a></li>
+            <li><a href="#products?category=cooling">AIO Liquid Coolers</a></li>
+          </ul>
+        </div>
+
+        <!-- Support -->
+        <div class="footer-col">
+          <h4>Customer Care</h4>
+          <ul class="footer-links-list">
+            <li><a href="javascript:void(0)">Warranty Information</a></li>
+            <li><a href="javascript:void(0)">Shipping & Returns</a></li>
+            <li><a href="javascript:void(0)">Compatibility Checker</a></li>
+            <li><a href="javascript:void(0)">PC Build Guides</a></li>
+            <li><a href="javascript:void(0)">Contact Support</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="footer-col">
+          <h4>Stay Ahead</h4>
+          <p style="font-size: 0.85rem; margin-bottom: 1rem; color: #94a3b8;">Subscribe for restock alerts on high-demand GPUs and exclusive promotional codes.</p>
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="email" class="newsletter-input" required placeholder="Enter your email...">
+            <button type="submit" class="btn-primary" style="padding: 0.75rem; justify-content: center; font-size: 0.9rem;">
+              Subscribe Now
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom subfooter -->
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <div>
+          &copy; 2026 TechParts Inc. All rights reserved. Built with precision for PC enthusiasts.
+        </div>
+        <div class="payment-badges-row">
+          <i class="fa-brands fa-cc-visa" title="Visa"></i>
+          <i class="fa-brands fa-cc-mastercard" title="Mastercard"></i>
+          <i class="fa-brands fa-cc-apple-pay" title="Apple Pay"></i>
+          <i class="fa-brands fa-google-pay" title="Google Pay"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
